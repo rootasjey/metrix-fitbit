@@ -1,0 +1,34 @@
+<svg id="root">
+  
+  <rect id="background">
+    <g class="metric-container" >
+      <text id="metric0" class="metric activity-2 format-current" pointer-events="visible"/>
+      <image id="metric0-img" href="icons/clock.png" 
+           width="30" height="30" x="290" y="20" pointer-events="visible" />
+    </g>
+
+    <g class="metric-container" >
+      <text id="metric1" class="metric activity-3 format-current" pointer-events="visible"/>
+      <image id="metric1-img" href="icons/date.png" 
+       width="30" height="30" x="290" y="80" pointer-events="visible" />
+    </g>
+
+    <g class="metric-container" >
+      <text id="metric2" class="metric activity-7 format-current" pointer-events="visible"/>
+      <image id="metric2-img" href="icons/steps.png" 
+           width="30" height="30" x="290" y="130" pointer-events="visible" />
+    </g>
+
+    <g class="metric-container" >
+      <text id="metric3" class="metric activity-0 format-current" pointer-events="visible"/>
+      <image id="metric3-img" href="icons/activeMinutes.png" 
+        width="30" height="30" x="290" y="175" pointer-events="visible" />
+    </g>
+
+    <g class="metric-container" >
+      <text id="metric4" class="metric activity-5 format-current" pointer-events="visible"/>
+      <image id="metric4-img" href="icons/elevationGain.png" 
+        width="30" height="30" x="290" y="220" pointer-events="visible" />
+    </g>
+  </rect>
+</svg>

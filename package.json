@@ -1,0 +1,26 @@
+{
+  "fitbit": {
+    "appUUID": "33702990-cf56-4f66-944c-fb578a37ebf2",
+    "appType": "clockface",
+    "appDisplayName": "Metrix",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [
+      "access_activity",
+      "access_heart_rate",
+      "run_background"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Metrix"
+      }
+    }
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~1.0.0"
+  }
+}
