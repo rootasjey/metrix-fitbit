@@ -14,12 +14,12 @@
   fill: white;
   
   font-size: 50;
-  font-family: Colfax-Light;
+  font-family: Colfax-Medium;
 }
 
 #metric0 {
   font-family: Colfax-Medium;
-  font-size: 65;
+  font-size: 70;
   
   text-length: 32;
   text-anchor: end;
@@ -31,26 +31,26 @@
   text-length: 32;
   text-anchor: end;
   x: 80%;
-  y: 45%+2;
+  y: 40%+2;
 }
 
 #metric2 {
   text-length: 32;
   text-anchor: end;
   x: 80%;
-  y: 62%+5;
+  y: 60%+0;
 }
 
 #metric3 {
   text-length: 32;
   text-anchor: end;
   x: 80%;
-  y: 80%+5;
+  y: 78%+0;
 }
 
 #metric4 {
   text-length: 32;
   text-anchor: end;
   x: 80%;
-  y: 100%+0;
+  y: 96%+0;
 }
