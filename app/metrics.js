@@ -2,6 +2,7 @@ export const metrics = [
   {
     activity: 2, // clock
     color: undefined,
+    fontSize: 70,
     format: 'current',
     metricNumber: 0, // vertical visual position on the clock face
   },

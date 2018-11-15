@@ -19,8 +19,7 @@ clock.ontick = (evt) => {
 display.addEventListener("change", function () {
   if (this.on) {
     hrm.start();
-    data.updateAll({hrm, evt});
-    
+    data.reinitialize({ activityName: 'weather'});    
     return;
   }
   

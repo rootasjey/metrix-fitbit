@@ -1,3 +1,5 @@
+import { Conditions } from '../lib/fitbit-weather/common';
+
 export function getNextColor(color) {
   switch (color) {
     case '#1abc9c':
@@ -42,5 +44,32 @@ export function getNextColor(color) {
       return '#1abc9c';
     default:
       return '#1abc9c';
+  }
+}
+
+export function getWeatherColor({ code, isDay }) {
+  switch (code) {
+    case Conditions.ClearSky:
+      return isDay ? '#f1c40f' : '#2c3e50';
+    case Conditions.FewClouds:
+      return isDay ? '#d35400' : '#686de0';
+    case Conditions.ScatteredClouds:
+      return isDay ? '#bdc3c7' : '#30336b';
+    case Conditions.BrokenClouds:
+      return isDay ? '#7f8c8d' : '#192a56';
+    case Conditions.ShowerRain:
+      return isDay ? '#6ab04c' : '#009432';
+    case Conditions.Rain:
+      return isDay ? '#2980b9' : '#1B1464';
+    case Conditions.Thunderstorm:
+      return '#c0392b';
+    case Conditions.Snow:
+      return '#f5f6fa';
+    case Conditions.Mist:
+      return '#7f8fa6';
+    case Conditions.Unknown:
+      return '#8c7ae6';
+    default:
+      return '#8c7ae6';
   }
 }

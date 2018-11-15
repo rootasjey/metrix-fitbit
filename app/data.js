@@ -6,10 +6,13 @@ import { activities } from './activities';
 import { metrics } from './metrics';
 import * as settings from './settings';
 
+let _weatherFetched = false;
+
 export function initialize() {
   metrics.map(metric => {
     initActivity({ metric });
     metric.initActivity = initActivity;
+    metric.activityCount = activities.length;
   });
   
   bindSwitchTapMode();
@@ -17,6 +20,16 @@ export function initialize() {
 
 export function updateAll(params) {
   metrics.map(metric => metric.update(params));
+}
+
+/**
+ * Make a metric reinitialize its data.
+ * @param {String} activityName - Activity's name to reinitialize.
+ */
+export function reinitialize({ activityName }) {
+  metrics
+    .filter(metric => metric.name === activityName)
+    .map(metric => { metric.initialized = false });
 }
 
 function bindSwitchTapMode() {
@@ -62,6 +75,7 @@ function initActivity({ metric, asked }) {
   
   if (activity.icon) {
     icon.style.visibility = 'visible';
+    icon.style.opacity = 1;
     textElem.x = 280;
     
     icon.href = activity.icon;
@@ -77,28 +91,21 @@ function initActivity({ metric, asked }) {
     textElem.style.fill = metric.color;
   }
   
-  textElem.style.fill = activity.textFill ? activity.textFill : 'white';
   textElem.text = '--';
+  textElem.style.fill = metric.color ? metric.color : activity.textFill ? activity.textFill : 'white';
+  textElem.style.fontSize = metric.fontSize ? metric.fontSize : 50;
 
   // NOTE: Object.assign is NOT available :(
-  //metric.activity             = activity.activity;
   metric.changeColor          = activity.changeColor;
   metric.changeFormat         = activity.changeFormat;
-  //metric.color                = activity.color;
-  //metric.format               = activity.format;
+  metric.initialized          = activity.initialized
   metric.name                 = activity.name;
   metric.onClick              = activity.onClick;
   metric.switchToNext         = activity.switchToNext;
-  metric.update               = activity.update;
   metric.saveSettings         = activity.saveSettings;
+  metric.update               = activity.update;
   
   textElem.onclick = () => metric.onClick(metric)
-  
-  /*
-  textElem.onclick = (e) => {
-    metric.changeFormat();
-  }
-  */
 }
 
 settings.initialize(data => {
@@ -108,4 +115,8 @@ settings.initialize(data => {
     const bg = document.getElementById('background');
     bg.style.fill = data.backgroundColor;
   }
-})
+});
+
+settings.bindReinitialize(({ activityName }) => { 
+  reinitialize({ activityName })
+});
