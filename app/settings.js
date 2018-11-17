@@ -4,10 +4,8 @@
   Callback should be used to update your UI.
 */
 import { me }                 from "appbit";
-import { me as device }       from "device";
 import * as fs                from "fs";
 import * as messaging         from "messaging";
-//import { reinitialize }  from './data';
 
 const SETTINGS_TYPE = "cbor";
 const SETTINGS_FILE = "settings.cbor";
@@ -16,7 +14,7 @@ const KEY_TEMPERATURE_UNIT = 'imperialUnit';
 
 let settings = {};
 let onsettingschange;
-let reinit;
+let reinitialize;
 
 export function initialize(callback) {
   settings = loadSettings();
@@ -25,7 +23,7 @@ export function initialize(callback) {
 }
 
 export function bindReinitialize(callback) {
-  reinit = callback;
+  reinitialize = callback;
 }
 
 export function getData(key = '') {
@@ -41,11 +39,10 @@ export function update({ key, value }) {
 messaging.peerSocket.addEventListener("message", function(evt) {
   settings[evt.data.key] = evt.data.value;
   onsettingschange(settings);
-  
+
   // Update Immediately weather value when unit changed
   if (evt.data.key === KEY_TEMPERATURE_UNIT) {
-//    reinitialize({ activityName: 'weather' });
-    reinit({ activityName: 'weather' });
+    reinitialize({ activityName: 'weather' });
   }
 })
 

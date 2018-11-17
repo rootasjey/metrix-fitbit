@@ -1,11 +1,9 @@
-import document from 'document';
+import document           from 'document';
 
-import * as util from '../../common/utils';
-import * as colors from '../../common/colors';
-
-import * as settings from '../settings';
-
-import * as api from '../../lib/fitbit-weather/app';
+import * as api           from '../../lib/fitbit-weather/app';
+import * as colors        from '../../common/colors';
+import * as settings      from '../settings';
+import * as util          from '../../common/utils';
 
 import { getWeatherIcon } from '../../common/icons';
 
@@ -59,10 +57,9 @@ export const weather = {
       const refreshTime = weatherRefreshTime ?
             parseInt(weatherRefreshTime.values[0].name) : 60;
 
-      // return the cached value if it is less than 30 minutes old by default
+      // return the cached value if it is less than 60 minutes old by default
       api.fetch(weatherRefreshTime * 60 * 1000)
       .then(data => {
-//        console.log(JSON.stringify(data));
         const format = this.format;
 
         metricElem.text = `${getText({ data, format, imperialUnit })}`;

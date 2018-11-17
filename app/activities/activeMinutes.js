@@ -1,13 +1,10 @@
-import document from 'document';
-
-import * as util from '../../common/utils';
-
+import document             from 'document';
 import { getActivityValue } from '../userActivity';
+import * as util            from '../../common/utils';
 
 import { onClickActivity, 
          saveActivitySettings, 
          switchToNextActivity,
-        
        } from '../activityActions';
 
 export const activeMinutes = {

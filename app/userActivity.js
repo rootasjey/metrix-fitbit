@@ -8,11 +8,17 @@ export function getActivityValue({ activity, metric }) {
       text = `${today.local[activity]}`;
 
     } else if (metric.format === 'percentage') {
-      text = today.local[activity] / goals[activity] * 100;
+      const activityGoal = typeof goals[activity] !== 'undefined' ? 
+            goals[activity] : 0;
+      
+      text = today.local[activity] / activityGoal * 100;
       text = Math.floor(text) + '%';
       
     } else {
-      text = today.local[activity] - goals[activity];
+      const activityGoal = typeof goals[activity] !== 'undefined' ? 
+            goals[activity] : 0;
+      
+      text = today.local[activity] - activityGoal;
       
       if (text > 0) text = '+' + text;
     }

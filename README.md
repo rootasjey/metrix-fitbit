@@ -1,20 +1,27 @@
 # metrix-fitbit
-A Fitbit Ionic clock face showing metrics activities.
+A Fitbit Ionic & Versa clock face showing metrics activities.
 
-You can change each metric to one of the 9 available. You can even have the same activity multiple times and showing different states value.
+You can change each metric to one of the 9 available. You can even have the same activity multiple times and showing different stats format.
 
 For example, for steps, you could show both:
 
-* the total steps value
-* percentage achievement goal of steps
+* the total steps
+* percentage achievement goal
 
-![metrix.gif](metrix.gif)
-
-![metrix.png](metrix.png)
+| Ionic | Versa |
+|----------|:-------------:|
+| ![ionic.png](screenshots/ionic.png) | ![versa.png](screenshots/versa.png) |
+| ![ionic2.png](screenshots/ionic2.png) | ![versa2.png](screenshots/versa2.png) |
+| ![ionic.gif](screenshots/ionic.gif) |![versa.gif](screenshots/versa.gif) |
 
 ## Changelog
 
-15/11/18
+### 17/11/18
+
+* Now support Versa
+* Handle missing permissions (in case you deny some of them)
+
+### 15/11/18
 * Add weather metric
 * Make the mode (stats/switch) button bigger
 * Fix save color for clock
@@ -48,13 +55,13 @@ Because this clock face shows personal goals, heart rate and weather data, it us
 * Heart rate sensor
 * **GPS location** for the weather
 
-No data is keep nor send to first or third parties entities, companies or individuals. You can check by looking at the source code.
+No data is kept nor send to first or third parties entities, companies or individuals. You can check by looking at the source code.
 
 When installing the clock face, it'll ask you for these permissions. You can deny all, some or none. The non-functional activities metrics won't show on the clock face in that case.
 
 ## Ionic vs. Versa
 
-Soon.
+The clock face support both Ionic & Versa with a layout adaptation.
 
 ## Settings
 
@@ -68,9 +75,9 @@ You can change the refresh time rate in the settings. By default, the cache last
 
 Weather data is only updated when the clock face is active (i.e. screen turned on) and is not updated in background every X time. This is because there's a usage limite of the API.
 
-As I pay for any extra usage of the DarkSky API, feel free to support the clock face if you use this daily.
+As I pay for for the DarkSky API usage, I can't afford all API requests. Feel free to support the clock face if you use this daily.
 
-_Because there's a API usage limit and I pay for extra queries, the weather data may not update right away. This will depend on the amount of users this clock face has._
+_Because there's a API usage limit, the weather data may not update right away. This will depend on the amount of users using this clock face._
 
 ## Contributing
 
@@ -80,14 +87,19 @@ Feel free to contribute to this project by:
 * Openning an issue if
   * you want to propose a new feature
   * or if you encounter a problem
+* Pay me a tea
 
 ## Resources
 
-Thanks for the following:
+Acitivities icons are provided by:
 
 * [Fitbit's icons](https://github.com/Fitbit/sdk-design-assets)
 
-The following assets are from [www.flaticon.com](https://www.flaticon.com/") and is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0).
+Weather API wrapper is provided by:
+
+* [fitbit-weather](https://github.com/gregoiresage/fitbit-weather)
+
+Weather icons are from [www.flaticon.com](https://www.flaticon.com/"), is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0), and provided by:
 
 * [Good Ware](https://www.flaticon.com/authors/good-ware)
 * [Freepik](https://www.freepik.com)

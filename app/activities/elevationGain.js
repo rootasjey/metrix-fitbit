@@ -1,7 +1,5 @@
-import document from 'document';
-
-import * as util from '../../common/utils';
-
+import document             from 'document';
+import * as util            from '../../common/utils';
 import { getActivityValue } from '../userActivity';
 
 import { onClickActivity, 

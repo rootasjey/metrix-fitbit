@@ -1,9 +1,7 @@
-import clock from "clock";
-import { display } from "display";
-
-import * as data from './data';
-
-import { HeartRateSensor } from "heart-rate";
+import clock                from "clock";
+import * as data            from './data';
+import { display }          from "display";
+import { HeartRateSensor }  from "heart-rate";
 
 const hrm = new HeartRateSensor();
 
