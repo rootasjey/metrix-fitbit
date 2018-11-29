@@ -11,10 +11,12 @@ const SETTINGS_TYPE = "cbor";
 const SETTINGS_FILE = "settings.cbor";
 
 const KEY_TEMPERATURE_UNIT = 'imperialUnit';
+const KEY_RESET_ALL_COLORS = "resetAllColors";
 
 let settings = {};
 let onsettingschange;
 let reinitialize;
+let resetAllColors;
 
 export function initialize(callback) {
   settings = loadSettings();
@@ -24,6 +26,10 @@ export function initialize(callback) {
 
 export function bindReinitialize(callback) {
   reinitialize = callback;
+}
+
+export function bindResetAllColors(callback) {
+  resetAllColors = callback;
 }
 
 export function getData(key = '') {
@@ -39,10 +45,14 @@ export function update({ key, value }) {
 messaging.peerSocket.addEventListener("message", function(evt) {
   settings[evt.data.key] = evt.data.value;
   onsettingschange(settings);
-
+  
   // Update Immediately weather value when unit changed
   if (evt.data.key === KEY_TEMPERATURE_UNIT) {
     reinitialize({ activityName: 'weather' });
+  }
+  
+  if (evt.data.key === KEY_RESET_ALL_COLORS) {
+    resetAllColors();
   }
 })
 

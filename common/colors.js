@@ -26,7 +26,7 @@ export function getNextColor(color) {
       return '#f39c12';
     case '#f39c12':
       return '#e67e22';
-    case 'e67e22':
+    case '#e67e22':
       return '#d35400';
     case '#d35400':
       return '#e74c3c';
@@ -41,7 +41,7 @@ export function getNextColor(color) {
     case '#95a5a6':
       return '#7f8c8d';
     case '#7f8c8d':
-      return '#1abc9c';
+      return undefined;
     default:
       return '#1abc9c';
   }
@@ -50,23 +50,23 @@ export function getNextColor(color) {
 export function getWeatherColor({ code, isDay }) {
   switch (code) {
     case Conditions.ClearSky:
-      return isDay ? '#f1c40f' : '#2c3e50';
+      return isDay ? '#f1c40f' : '#2ecc71';
     case Conditions.FewClouds:
       return isDay ? '#d35400' : '#686de0';
     case Conditions.ScatteredClouds:
-      return isDay ? '#bdc3c7' : '#30336b';
+      return isDay ? '#bdc3c7' : '#54a0ff';
     case Conditions.BrokenClouds:
-      return isDay ? '#7f8c8d' : '#192a56';
+      return isDay ? '#7f8c8d' : '#2e86de';
     case Conditions.ShowerRain:
       return isDay ? '#6ab04c' : '#009432';
     case Conditions.Rain:
-      return isDay ? '#2980b9' : '#1B1464';
+      return isDay ? '#2980b9' : '#0abde3';
     case Conditions.Thunderstorm:
       return '#c0392b';
     case Conditions.Snow:
       return '#f5f6fa';
     case Conditions.Mist:
-      return '#7f8fa6';
+      return '#dfe4ea';
     case Conditions.Unknown:
       return '#8c7ae6';
     default:

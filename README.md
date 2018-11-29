@@ -1,4 +1,5 @@
 # metrix-fitbit
+
 A Fitbit Ionic & Versa clock face showing metrics activities.
 
 You can change each metric to one of the 9 available. You can even have the same activity multiple times and showing different stats format.
@@ -16,15 +17,13 @@ For example, for steps, you could show both:
 
 ## Changelog
 
-### 17/11/18
+### 29/11/18
 
-* Now support Versa
-* Handle missing permissions (in case you deny some of them)
-
-### 15/11/18
-* Add weather metric
-* Make the mode (stats/switch) button bigger
-* Fix save color for clock
+* You can now personalize metric's color
+* Metric's color personalization can be reset in mobile settings
+* Add new time and date format
+* Add new colors for metrics and background
+* Add donation button (mostly for weather API)
 
 ## Features
 
@@ -75,7 +74,7 @@ You can change the refresh time rate in the settings. By default, the cache last
 
 Weather data is only updated when the clock face is active (i.e. screen turned on) and is not updated in background every X time. This is because there's a usage limite of the API.
 
-As I pay for for the DarkSky API usage, I can't afford all API requests. Feel free to support the clock face if you use this daily.
+As I pay for for the DarkSky API usage, I can't afford all API requests. Feel free to support the clock face if you use this daily. Feel free to help me with the cost by donating some penies.
 
 _Because there's a API usage limit, the weather data may not update right away. This will depend on the amount of users using this clock face._
 
@@ -111,3 +110,16 @@ Weather icons are from [www.flaticon.com](https://www.flaticon.com/"), is licens
 ## Licence
 
 This project is under MIT Licence.
+
+## Support
+
+Support OSS by paying me a beer 🍺
+
+Thank you if you decide to help me :)
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="hosted_button_id" value="6QQTSRKQ6Q87E" />
+<input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />
+</form>

@@ -2,7 +2,7 @@ function Colors(props) {
   return (
     <Page>
       <Section>
-        <Text>Thank you for trying <Text bold>Metrix</Text> !</Text>
+        <Text>Thank you for trying <Text bold>Metrix</Text> ! ❤️</Text>
       </Section>
       
       <Section
@@ -13,15 +13,31 @@ function Colors(props) {
         <ColorSelect
           settingsKey="backgroundColor"
           colors={[
+            {color: '#535c68'},
+            {color: '#2f3640'},
+            {color: '#130f40'},
             {color: 'black'},
-            {color: 'tomato'},
-            {color: 'sandybrown'},
-            {color: 'gold'},
-            {color: 'aquamarine'},
-            {color: 'deepskyblue'},
-            {color: 'plum'}
+            {color: '#badc58'},
+            {color: '#6ab04c'},
+            {color: '#fd79a8'},
+            {color: '#b71540'},
+            {color: '#f53b57'},
+            {color: '#3c40c6'},
+            {color: '#0fbcf9'},
+            {color: '#ecf0f1'},
+            {color: '#fdcb6e'},
+            {color: '#4a69bd'},
           ]}
         />
+      </Section>
+      
+      
+      <Section title={<Text bold align="center">Metrics colors</Text>}>
+        <Text>This will reset all customized colors of all metrics.</Text>
+        <Button
+          label="Reset all colors"
+          onClick={() => { props.settingsStorage.setItem('resetAllColors', 'true') }}
+          />
       </Section>
       
       <Section title={<Text bold align="center">Weather</Text>}>
@@ -52,11 +68,27 @@ function Colors(props) {
         </Text> 
       </Section>
       
+      <Section title={<Text bold align="center">Support</Text>}>
+        <Text>
+          You can pay me a beer on <Link source='https://paypal.me/rootasjey' bold>Paypal </Link>.
+        </Text>
+        
+        <Text>
+          As I pay for for the DarkSky API usage, I can't afford all API requests. Feel free to support the clock face if you use this daily.
+        </Text>
+        
+        <Text>
+          Because there's a API usage limit, the weather data may not update right away. This will depend on the amount of users using this clock face.
+        </Text>
+      </Section>
+      
       <Section title={<Text bold align="center">About</Text>}>
         <Text>
           This project is open sourced on <Link source='https://github.com/rootasjey/metrix-fitbit' bold>GitHub.</Link> 
           You can ask there for a new feature or report an issue.
         </Text>
+        
+        <Text>Coded with ❤️</Text>
       </Section>
       
       <Section title={<Text bold align="center">Credits</Text>}>
@@ -68,10 +100,10 @@ function Colors(props) {
         <Text>
           Icons made by <Link source='https://www.flaticon.com/authors/good-ware'>Good Ware </Link>,
           <Link source='https://www.freepik.com'> Freepik </Link>,
-          <Link source='https://www.flaticon.com/authors/iconixar'> iconixar </Link>,
-          <Link source='https://www.flaticon.com/authors/rns'> RNS </Link>,
-          <Link source='https://www.flaticon.com/authors/smashicons'> Smashicons </Link>,
-          <Link source='https://www.flaticon.com/authors/yannick'> Yannick </Link> from
+          <Link source='https://www.flaticon.com/authors/iconixar'> iconixar</Link>,
+          <Link source='https://www.flaticon.com/authors/rns'> RNS</Link>,
+          <Link source='https://www.flaticon.com/authors/smashicons'> Smashicons</Link>,
+          <Link source='https://www.flaticon.com/authors/yannick'> Yannick</Link> from
           <Link source='https://www.flaticon.com/'> www.flaticon.com</Link> is licensed by 
           <Link source='http://creativecommons.org/licenses/by/3.0/'> CC 3.0 BY.</Link>
         </Text>

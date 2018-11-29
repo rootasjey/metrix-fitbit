@@ -45,3 +45,42 @@ export function getNextFormat(format) {
   if (format === 'additional') return 'current';
   return format;
 }
+
+const _modes = {
+    colors: {
+      name: 'colors',
+      index: 0,
+      icon: 'icons/colors.png'
+    },
+    cycles: {
+      name: 'cycles',
+      index: 1,
+      icon: 'icons/cycles.png'
+    },
+    stats: {
+      name: 'stats',
+      index: 2,
+      icon: 'icons/stats.png'
+    }
+  }
+
+export function getTapMode(name) {
+  return _modes[name];
+}
+
+export function getNextTapMode(currentMode) {
+  const index = (currentMode.index + 1) % Object.keys(_modes).length;
+  const nextMode;
+
+  Object.keys(_modes)
+  .some((key, i) => {
+    if (i === index) {
+      nextMode = _modes[key];
+      return true;
+    }
+    
+    return false;
+  });
+  
+  return nextMode;
+}
