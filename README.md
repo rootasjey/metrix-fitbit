@@ -113,13 +113,6 @@ This project is under MIT Licence.
 
 ## Support
 
-Support OSS by paying me a beer 🍺
+[Support OSS by paying me a beer](https://www.paypal.me/rootasjey) 🍺
 
 Thank you if you decide to help me :)
-
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="6QQTSRKQ6Q87E" />
-<input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />
-</form>
