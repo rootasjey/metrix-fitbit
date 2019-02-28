@@ -3,9 +3,9 @@
   Requires companion/simple/companion-settings.js
   Callback should be used to update your UI.
 */
-import { me }                 from "appbit";
-import * as fs                from "fs";
-import * as messaging         from "messaging";
+import { me }         from "appbit";
+import * as fs        from "fs";
+import * as messaging from "messaging";
 
 const SETTINGS_TYPE = "cbor";
 const SETTINGS_FILE = "settings.cbor";
@@ -34,7 +34,7 @@ export function bindResetAllColors(callback) {
 
 export function getData(key = '') {
   if (key.length > 0) return settings[key];
-  return settings;
+  return undefined;
 }
 
 export function update({ key, value }) {
@@ -45,12 +45,12 @@ export function update({ key, value }) {
 messaging.peerSocket.addEventListener("message", function(evt) {
   settings[evt.data.key] = evt.data.value;
   onsettingschange(settings);
-  
+
   // Update Immediately weather value when unit changed
   if (evt.data.key === KEY_TEMPERATURE_UNIT) {
     reinitialize({ activityName: 'weather' });
   }
-  
+
   if (evt.data.key === KEY_RESET_ALL_COLORS) {
     resetAllColors();
   }

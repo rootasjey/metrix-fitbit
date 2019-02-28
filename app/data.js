@@ -13,7 +13,7 @@ export function initialize() {
     metric.initActivity = initActivity;
     metric.activityCount = activities.length;
   });
-  
+
   bindSwitchTapMode();
 }
 
@@ -35,16 +35,16 @@ function bindSwitchTapMode() {
   const icon = document.getElementById('action-switcher-img');
   const tapMode = settings.getData('tapMode') || 'stats';
   const currentMode = util.getTapMode(tapMode);
-  
+
   icon.y = layout.getModeIconY();
   icon.href = currentMode.icon;
-  
+
   icon.onclick = (e) => {
     currentMode = util.getNextTapMode(currentMode);
-    
+
     tapMode = currentMode.name;
     icon.href = currentMode.icon;
-    
+
     settings.update({ key: 'tapMode', value: tapMode });
   }
 }
@@ -57,48 +57,48 @@ function bindSwitchTapMode() {
 function initActivity({ metric, asked }) {
   if (!asked) {
     const savedData = settings.getData(`metric${metric.metricNumber}`);
-  
+
     if (savedData) {
-      metric.activity = savedData.activity ? 
+      metric.activity = savedData.activity ?
         savedData.activity : metric.activity;
 
-      metric.format = savedData.format ? 
+      metric.format = savedData.format ?
         savedData.format : metric.format;
 
-      metric.color = savedData.color ? 
+      metric.color = savedData.color ?
         savedData.color : metric.color;
     }
   }
-  
+
   // Permission check
   metric.activity = permissions.getNextAllowedActivity(metric.activity);
-  
+
   const activity = activities[metric.activity];
 
   const textElem = document.getElementById(`metric${metric.metricNumber}`)
   const icon = document.getElementById(`metric${metric.metricNumber}-img`);
-  
+
   if (activity.icon) {
     icon.style.visibility = 'visible';
     icon.style.opacity = 1;
     textElem.x = layout.getTextX({ icon: true });
-    
+
     icon.href = activity.icon;
     icon.style.fill = activity.iconFill ? activity.iconFill : 'white';
-    
+
     icon.x = layout.getIconX();
     icon.y = layout.getIconY({ metricNumber: metric.metricNumber });
-    
+
   } else {
     icon.style.visibility = 'hidden';
     textElem.x = layout.getTextX({ icon: false });
   }
-  
+
   if (metric.color) {
     icon.style.fill = metric.color;
     textElem.style.fill = metric.color;
   }
-  
+
   textElem.text = '--';
   textElem.style.fill = metric.color ? metric.color : activity.textFill ? activity.textFill : 'white';
   textElem.style.fontSize = metric.fontSize ? metric.fontSize : 50;
@@ -115,27 +115,27 @@ function initActivity({ metric, asked }) {
   metric.saveSettings         = activity.saveSettings;
   metric.textFill             = activity.textFill;
   metric.update               = activity.update;
-  
+
   textElem.onclick = () => metric.onClick(metric)
 }
 
 // Listen to settings changes
 settings.initialize(data => {
   if (!data) return;
-  
+
   if (data.backgroundColor) {
     const bg = document.getElementById('background');
     bg.style.fill = data.backgroundColor;
   }
 });
 
-settings.bindReinitialize(({ activityName }) => { 
+settings.bindReinitialize(({ activityName }) => {
   reinitialize({ activityName })
 });
 
 settings.bindResetAllColors(() => {
-  metrics.map((metric) => { 
-    metric.color = undefined; 
-    metric.refreshActivityColor(); 
+  metrics.map((metric) => {
+    metric.color = undefined;
+    metric.refreshActivityColor();
   });
-})
+});

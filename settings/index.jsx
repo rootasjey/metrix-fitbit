@@ -4,12 +4,12 @@ function Colors(props) {
       <Section>
         <Text>Thank you for trying <Text bold>Metrix</Text> ! ❤️</Text>
       </Section>
-      
+
       <Section
         title={<Text bold align="center">Background Color Settings</Text>}>
-        
+
         <Text>This will change the clock face background</Text>
-        
+
         <ColorSelect
           settingsKey="backgroundColor"
           colors={[
@@ -30,8 +30,8 @@ function Colors(props) {
           ]}
         />
       </Section>
-      
-      
+
+
       <Section title={<Text bold align="center">Metrics colors</Text>}>
         <Text>This will reset all customized colors of all metrics.</Text>
         <Button
@@ -39,13 +39,13 @@ function Colors(props) {
           onClick={() => { props.settingsStorage.setItem('resetAllColors', 'true') }}
           />
       </Section>
-      
+
       <Section title={<Text bold align="center">Weather</Text>}>
         <Toggle
           settingsKey="imperialUnit"
-          label={`Imperial (Fahrenheit)`}
+          label={`Imperial units (Fahrenheit)`}
         />
-        
+
         <Select
           title="Weather refresh time"
           label={`Refresh time (in minutes)`}
@@ -60,43 +60,54 @@ function Colors(props) {
         />
 
       </Section>
-      
+
+      <Section title={<Text bold align="center">Distance</Text>}>
+        <Text>
+          Activate this option to see distance in miles.
+        </Text>
+
+        <Toggle
+          label={`Imperial units (miles)`}
+          settingsKey="distanceImperialUnit"
+        />
+      </Section>
+
       <Section title={<Text bold align="center">Contact</Text>}>
         <Text>
           You can contact me on <Link source='https://twitter.com/jeremiecorpinot' bold>Twitter </Link>
           or by <Link source='mailto:jeremiecorpinot@outlook.com'>email</Link>.
-        </Text> 
+        </Text>
       </Section>
-      
+
       <Section title={<Text bold align="center">Support</Text>}>
         <Text>
           You can pay me a beer on <Link source='https://paypal.me/rootasjey' bold>Paypal </Link>.
         </Text>
-        
+
         <Text>
           As I pay for for the DarkSky API usage, I can't afford all API requests. Feel free to support the clock face if you use this daily.
         </Text>
-        
+
         <Text>
           Because there's a API usage limit, the weather data may not update right away. This will depend on the amount of users using this clock face.
         </Text>
       </Section>
-      
+
       <Section title={<Text bold align="center">About</Text>}>
         <Text>
-          This project is open sourced on <Link source='https://github.com/rootasjey/metrix-fitbit' bold>GitHub.</Link> 
+          This project is open sourced on <Link source='https://github.com/rootasjey/metrix-fitbit' bold>GitHub.</Link>
           You can ask there for a new feature or report an issue.
         </Text>
-        
+
         <Text>Coded with ❤️</Text>
       </Section>
-      
+
       <Section title={<Text bold align="center">Credits</Text>}>
-                
+
         <Text>
           Weather data is provided by <Link source='https://darksky.net/' bold>DarkSky </Link>.
-        </Text> 
-        
+        </Text>
+
         <Text>
           Icons made by <Link source='https://www.flaticon.com/authors/good-ware'>Good Ware </Link>,
           <Link source='https://www.freepik.com'> Freepik </Link>,
@@ -104,10 +115,10 @@ function Colors(props) {
           <Link source='https://www.flaticon.com/authors/rns'> RNS</Link>,
           <Link source='https://www.flaticon.com/authors/smashicons'> Smashicons</Link>,
           <Link source='https://www.flaticon.com/authors/yannick'> Yannick</Link> from
-          <Link source='https://www.flaticon.com/'> www.flaticon.com</Link> is licensed by 
+          <Link source='https://www.flaticon.com/'> www.flaticon.com</Link> is licensed by
           <Link source='http://creativecommons.org/licenses/by/3.0/'> CC 3.0 BY.</Link>
         </Text>
-        
+
       </Section>
     </Page>
   );

@@ -5,7 +5,7 @@ import * as settings from './settings';
 export function changeActivityColor(activity) {
   activity.color = colors.getNextColor(activity.color);
 
-  refreshActivityColor(activity)
+  refreshActivityColor(activity);
 }
 
 export function refreshActivityColor(activity) {
