@@ -8,7 +8,7 @@ import * as permissions from './permissions';
 import * as util        from '../common/utils';
 
 export function initialize() {
-  metrics.map(metric => {
+  metrics.map((metric) => {
     initActivity({ metric });
     metric.initActivity = initActivity;
     metric.activityCount = activities.length;

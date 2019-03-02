@@ -22,13 +22,13 @@ export function refreshActivityColor(activity) {
 
 export function onClickActivity(activity) {
   const tapMode = settings.getData('tapMode');
-  
+
   if (tapMode === 'colors') {
     activity.changeColor();
-    
+
   } else if (tapMode === 'cycles') {
     activity.switchToNext();
-    
+
   } else { // stats
     activity.changeFormat();
   }
@@ -36,9 +36,9 @@ export function onClickActivity(activity) {
 
 export function saveActivitySettings(activity) {
   const key = `metric${activity.metricNumber}`;
-  
+
   const { activity, color, format } = activity;
-  
+
   const value = {
     activity,
     color,
