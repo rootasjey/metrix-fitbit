@@ -72,6 +72,18 @@ function Colors(props) {
         />
       </Section>
 
+      <Section title={<Text bold align="center">Lock</Text>}>
+        <Text>
+          Activate this option to lock the clock face, so any interaction will be discarded.
+          This prevent to accidentally change the user interface.
+        </Text>
+
+        <Toggle
+          label={`Lock the clock face`}
+          settingsKey="lockUI"
+        />
+      </Section>
+
       <Section title={<Text bold align="center">Contact</Text>}>
         <Text>
           You can contact me on <Link source='https://twitter.com/jeremiecorpinot' bold>Twitter </Link>

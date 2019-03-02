@@ -116,17 +116,23 @@ function initActivity({ metric, asked }) {
   metric.textFill             = activity.textFill;
   metric.update               = activity.update;
 
-  textElem.onclick = () => metric.onClick(metric)
+  textElem.onclick = () => {
+    if (settings.getData('lockUI')) { return; }
+
+    metric.onClick(metric);
+  }
 }
 
 // Listen to settings changes
-settings.initialize(data => {
+settings.initialize((data) => {
   if (!data) return;
 
   if (data.backgroundColor) {
     const bg = document.getElementById('background');
     bg.style.fill = data.backgroundColor;
   }
+
+  updateLockUIIcon(data.lockUI);
 });
 
 settings.bindReinitialize(({ activityName }) => {
@@ -139,3 +145,10 @@ settings.bindResetAllColors(() => {
     metric.refreshActivityColor();
   });
 });
+
+settings.bindLockUIChanged(updateLockUIIcon);
+
+function updateLockUIIcon(active) {
+  const lockUI = document.getElementById('lockUI');
+  lockUI.style.visibility = active ? 'visible' : 'hidden';
+}

@@ -7,16 +7,18 @@ import { me }         from "appbit";
 import * as fs        from "fs";
 import * as messaging from "messaging";
 
-const SETTINGS_TYPE = "cbor";
-const SETTINGS_FILE = "settings.cbor";
+const SETTINGS_TYPE = 'cbor';
+const SETTINGS_FILE = 'settings.cbor';
 
 const KEY_TEMPERATURE_UNIT = 'imperialUnit';
 const KEY_RESET_ALL_COLORS = "resetAllColors";
+const KEY_LOCK_UI = 'lockUI';
 
 let settings = {};
 let onsettingschange;
 let reinitialize;
 let resetAllColors;
+let lockUIChanged;
 
 export function initialize(callback) {
   settings = loadSettings();
@@ -30,6 +32,10 @@ export function bindReinitialize(callback) {
 
 export function bindResetAllColors(callback) {
   resetAllColors = callback;
+}
+
+export function bindLockUIChanged(callback) {
+  lockUIChanged = callback;
 }
 
 export function getData(key = '') {
@@ -53,6 +59,10 @@ messaging.peerSocket.addEventListener("message", function(evt) {
 
   if (evt.data.key === KEY_RESET_ALL_COLORS) {
     resetAllColors();
+  }
+
+  if (evt.data.key === KEY_LOCK_UI) {
+    lockUIChanged(evt.data.value);
   }
 })
 
