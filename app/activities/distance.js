@@ -42,22 +42,22 @@ export const distance = {
 
     // Calculate manually values because of possible miles unit
     if (settings.getData('distanceImperialUnit') &&
-        this.format !== 'percentage') {
+      this.format !== 'percentage') {
 
-      const miles = 0.00062137;
+      const milesMutiplier = 0.00062137;
 
       const rawValue = getActivityRawValue(this.name);
 
       if (this.format === 'current') {
-        metric.text = Math.floor(rawValue * miles);
+        metric.text = truncate((rawValue * milesMutiplier));
 
       } else {
-        const todayValue = Math.floor(rawValue * miles);
+        const todayValue = rawValue * milesMutiplier;
 
         const activityGoal = typeof goals[this.name] !== 'undefined' ?
-          Math.floor(goals[this.name] * miles) : 0;
+          goals[this.name] * milesMutiplier : 0;
 
-        const text = todayValue - activityGoal;
+        const text = truncate((todayValue - activityGoal));
 
         if (text > 0) text = '+' + text;
 
@@ -70,3 +70,10 @@ export const distance = {
     metric.text = getActivityValue({activity: this.name, metric: this});
   }
 };
+
+function truncate(number = 0, precision = 3) {
+  const str = number.toString();
+  const indexDot = str.indexOf('.');
+
+  return str.substr(0, indexDot + precision);
+}
