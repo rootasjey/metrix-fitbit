@@ -59,6 +59,65 @@ function Colors(props) {
           ]}
         />
 
+        <Text bold>
+          Manual Location
+        </Text>
+
+        <Toggle
+          settingsKey="manualLocation"
+          label="Use Manual Location"
+        />
+
+        <Text>
+          Activate the manual location option to avoid using geolocation with GPS.
+        </Text>
+
+        <Text>
+          This is useful if the weather does not display properly
+          or if you want to keep your real location private 🕵.
+        </Text>
+
+        <Text italic>
+          Only fill the inputs which make sense for your location.
+        </Text>
+
+        <TextInput
+          placeholder="FR"
+          settingsKey="countryRegion"
+          title="Country Region"
+        />
+
+        <TextInput
+          placeholder="Tour Eiffel - Parc du Champ-de-Mars"
+          settingsKey="addressLine"
+          title="Address"
+        />
+
+        <TextInput
+          placeholder="75007"
+          settingsKey="postalCode"
+          title="Postal Code"
+        />
+
+        <TextInput
+          placeholder="WA"
+          settingsKey="adminDistrict"
+          title="Administration District"
+        />
+
+        <Button
+          label="Update"
+          onClick={() => {
+            props.settingsStorage.setItem('weatherNotification', 'updating...');
+            props.settingsStorage.setItem('updateManualLocation', 'true');
+          }}
+        />
+
+        <Text>
+          {`${typeof props.settingsStorage.getItem('weatherNotification') === 'string' ?
+            props.settingsStorage.getItem('weatherNotification') : '-'}`}
+        </Text>
+
       </Section>
 
       <Section title={<Text bold align="center">Distance</Text>}>

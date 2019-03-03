@@ -20,6 +20,8 @@ export const weather = {
     this.initialized = false;
   },
 
+  useFreshData: false, // set to true to not use cache
+
   icon: 'icons/weather/clearsky-day.png',
   iconFill: '#f1c40f',
   initActivity: undefined,
@@ -53,11 +55,14 @@ export const weather = {
     const imperialUnit = settings.getData('imperialUnit');
     const weatherRefreshTime = settings.getData('weatherRefreshTime');
 
-    const refreshTime = weatherRefreshTime ?
+    let refreshTime = weatherRefreshTime ?
           parseInt(weatherRefreshTime.values[0].name) : 60;
 
-    // return the cached value if it is less than 60 minutes old by default
-    api.fetch(refreshTime * 60 * 1000)
+    if (this.useFreshData) { this.useFreshData = false; refreshTime = 0; }
+    else { refreshTime *= 60 * 1000; }
+
+    // Return the cached value if it is less than 60 minutes old by default
+    api.fetch(refreshTime)
     .then(data => {
       const format = this.format;
 
@@ -72,7 +77,7 @@ export const weather = {
     })
     .catch(error => {
       metricElem.text = `error`;
-      console.log(error)
+      console.log(JSON.stringify(error));
     });
   }
 };

@@ -1,6 +1,4 @@
-/**
- * Visual representation on screen.
- */
+/** Visual representation on screen. */
 export const metrics = [
   {
     activity    : 2, // clock

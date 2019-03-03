@@ -24,11 +24,15 @@ export function updateAll(params) {
 /**
  * Make a metric reinitialize its data.
  * @param {String} activityName - Activity's name to reinitialize.
+ * @param {Boolean} useFreshData - If true, it will not use cache.
  */
-export function reinitialize({ activityName }) {
+export function reinitialize({ activityName, useFreshData }) {
   metrics
-    .filter(metric => metric.name === activityName)
-    .map(metric => { metric.initialized = false });
+    .filter((metric) => metric.name === activityName)
+    .map((metric) => {
+      metric.initialized = false;
+      metric.useFreshData = useFreshData;
+    });
 }
 
 function bindSwitchTapMode() {
@@ -135,8 +139,8 @@ settings.initialize((data) => {
   updateLockUIIcon(data.lockUI);
 });
 
-settings.bindReinitialize(({ activityName }) => {
-  reinitialize({ activityName })
+settings.bindReinitialize(({ activityName, useFreshData }) => {
+  reinitialize({ activityName, useFreshData })
 });
 
 settings.bindResetAllColors(() => {

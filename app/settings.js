@@ -10,9 +10,10 @@ import * as messaging from "messaging";
 const SETTINGS_TYPE = 'cbor';
 const SETTINGS_FILE = 'settings.cbor';
 
-const KEY_TEMPERATURE_UNIT = 'imperialUnit';
-const KEY_RESET_ALL_COLORS = "resetAllColors";
-const KEY_LOCK_UI = 'lockUI';
+const KEY_TEMPERATURE_UNIT  = 'imperialUnit';
+const KEY_MANUAL_LOCATION   = 'manualLocation';
+const KEY_LOCK_UI           = 'lockUI';
+const KEY_RESET_ALL_COLORS  = 'resetAllColors';
 
 let settings = {};
 let onsettingschange;
@@ -55,6 +56,10 @@ messaging.peerSocket.addEventListener("message", function(evt) {
   // Update Immediately weather value when unit changed
   if (evt.data.key === KEY_TEMPERATURE_UNIT) {
     reinitialize({ activityName: 'weather' });
+  }
+
+  if (evt.data.key === KEY_MANUAL_LOCATION) {
+    reinitialize({ activityName: 'weather', useFreshData: true });
   }
 
   if (evt.data.key === KEY_RESET_ALL_COLORS) {
