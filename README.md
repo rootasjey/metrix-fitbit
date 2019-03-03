@@ -17,6 +17,15 @@ For example, for steps, you could show both:
 
 ## Changelog
 
+### 03/03/19
+
+![changelog.png](screenshots/changelog.png);
+
+* Add battery metric indicator
+* Add miles units for distance metric
+* Add lock clock face UI in settings app
+* Add manual location for weather
+
 ### 29/11/18
 
 * You can now personalize metric's color
@@ -58,7 +67,7 @@ No data is kept nor send to first or third parties entities, companies or indivi
 
 When installing the clock face, it'll ask you for these permissions. You can deny all, some or none. The non-functional activities metrics won't show on the clock face in that case.
 
-## Ionic vs. Versa
+## Ionic & Versa
 
 The clock face support both Ionic & Versa with a layout adaptation.
 
@@ -77,6 +86,20 @@ Weather data is only updated when the clock face is active (i.e. screen turned o
 As I pay for for the DarkSky API usage, I can't afford all API requests. Feel free to support the clock face if you use this daily. Feel free to help me with the cost by donating some penies.
 
 _Because there's a API usage limit, the weather data may not update right away. This will depend on the amount of users using this clock face._
+
+## GPS
+
+By default, the weather uses the device GPS if available (for Ionic).
+
+If the device doen't have one (like the Versa), the weather will try to use the phone's GPS.
+
+However, if sometimes it doesn't work or you want to use a manual location, you can set a manual location through the (mobile) companion's settings app.
+
+![manual-location-settings.png](screenshots/manual-location-settings.png)
+
+* Activate the 'Use Manual Location' toggle
+* Fill the address values
+* Tap on the 'Update' button
 
 ## Contributing
 
