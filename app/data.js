@@ -108,6 +108,7 @@ function initActivity({ metric, asked }) {
   textElem.style.fontSize = metric.fontSize ? metric.fontSize : 50;
 
   // NOTE: Object.assign is NOT available :(
+  metric.active               = activity.active;
   metric.changeColor          = activity.changeColor;
   metric.changeFormat         = activity.changeFormat;
   metric.iconFill             = activity.iconFill;

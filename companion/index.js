@@ -94,7 +94,7 @@ function sendSettingData(data) {
 // WEATHER
 // -------
 weather.setup({
-  apiKey : '57281e87e833689d3150c587198f04c6',
+  apiKey: '57281e87e833689d3150c587198f04c6',
   bingMapKey: 'As2xOFxZwP4XEckfO5XKZ5u5qJHdD3QXUkq429Cs75Hect8Ksw3j35tN1CPshina',
   provider : weather.Providers.darksky,
 });

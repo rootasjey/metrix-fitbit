@@ -1,6 +1,6 @@
 import * as colors   from '../common/colors';
-import document      from 'document';
 import * as settings from './settings';
+import document      from 'document';
 
 export function changeActivityColor(activity) {
   activity.color = colors.getNextColor(activity.color);

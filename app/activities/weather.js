@@ -10,6 +10,11 @@ import { getWeatherIcon } from '../../common/icons';
 
 export const weather = {
   activity: 8,
+  /**
+   * To prevent updating weather icon async.
+   * False when calling switchToNextActivity(this)
+   */
+  active: true,
   changeColor: function () {
     actions.changeActivityColor(this);
   },
@@ -33,6 +38,8 @@ export const weather = {
   refreshActivityColor: function () { actions.refreshActivityColor(this); },
 
   switchToNext: function () {
+    this.active = false;
+
     actions.switchToNextActivity(this);
   },
 
@@ -63,7 +70,9 @@ export const weather = {
 
     // Return the cached value if it is less than 60 minutes old by default
     api.fetch(refreshTime)
-    .then(data => {
+    .then((data) => {
+      if (!this.active) { return; }
+
       const format = this.format;
 
       metricElem.text = `${getText({ data, format, imperialUnit })}`;
