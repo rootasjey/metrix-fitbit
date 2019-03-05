@@ -42,7 +42,7 @@ export function saveActivitySettings(activity) {
   const value = {
     activity,
     color,
-    format
+    format,
   };
 
   settings.update({ key, value });

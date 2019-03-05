@@ -143,6 +143,17 @@ function Colors(props) {
         />
       </Section>
 
+      <Section title={<Text bold align="center">Panic Zone</Text>}>
+        <Text>
+          If the clock face become unstable, you're at the right place.
+        </Text>
+
+        <Button
+          label="Reset Metrics"
+          onClick={() => { props.settingsStorage.setItem('resetMetrics', 'true') }}
+        />
+      </Section>
+
       <Section title={<Text bold align="center">Contact</Text>}>
         <Text>
           You can contact me on <Link source='https://twitter.com/jeremiecorpinot' bold>Twitter </Link>

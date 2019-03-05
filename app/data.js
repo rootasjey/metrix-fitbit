@@ -7,6 +7,10 @@ import * as settings    from './settings';
 import * as permissions from './permissions';
 import * as util        from '../common/utils';
 
+import {
+  saveActivitySettings,
+} from './activityActions';
+
 export function initialize() {
   metrics.map((metric) => {
     initActivity({ metric });
@@ -15,6 +19,39 @@ export function initialize() {
   });
 
   bindSwitchTapMode();
+}
+
+function resetMetrics() {
+  metrics.map((metric, index) => {
+    metric.activity = getMatchIndexActivity(index);
+    metric.format = 'current';
+    metric.color = undefined;
+
+    initActivity({ metric, asked: true });
+
+    metric.initActivity = initActivity;
+    metric.activityCount = activities.length;
+
+    saveActivitySettings(metric);
+  });
+}
+
+function getMatchIndexActivity(index) {
+  switch (index) {
+    case 0:
+      return 2; // clock
+    case 1:
+      return 3; // date
+    case 2:
+      return 7; // steps
+    case 3:
+      return 0; // active minutes
+    case 4:
+      return 5; // elevation gain
+
+    default:
+      return 2;
+  }
 }
 
 export function updateAll(params) {
@@ -26,7 +63,7 @@ export function updateAll(params) {
  * @param {String} activityName - Activity's name to reinitialize.
  * @param {Boolean} useFreshData - If true, it will not use cache.
  */
-export function reinitialize({ activityName, useFreshData }) {
+export function initMetric({ activityName, useFreshData }) {
   metrics
     .filter((metric) => metric.name === activityName)
     .map((metric) => {
@@ -140,8 +177,12 @@ settings.initialize((data) => {
   updateLockUIIcon(data.lockUI);
 });
 
-settings.bindReinitialize(({ activityName, useFreshData }) => {
-  reinitialize({ activityName, useFreshData })
+settings.bindInitMetric(({ activityName, useFreshData }) => {
+  initMetric({ activityName, useFreshData })
+});
+
+settings.bindResetMetrics(() => {
+  resetMetrics();
 });
 
 settings.bindResetAllColors(() => {
