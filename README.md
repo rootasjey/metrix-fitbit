@@ -17,7 +17,7 @@ For example, for steps, you could show both:
 
 ## Changelog
 
-### 03/03/19
+### 05/03/19
 
 ![changelog.png](screenshots/changelog.png);
 
@@ -25,6 +25,7 @@ For example, for steps, you could show both:
 * Add miles units for distance metric
 * Add lock clock face UI in settings app
 * Add manual location for weather
+* Add a reset all metrics (panic) button
 
 ### 29/11/18
 
@@ -46,6 +47,7 @@ For example, for steps, you could show both:
 ## Activities metrics
 
 * active minutes
+* battery level
 * calories
 * clock
 * date
@@ -93,7 +95,7 @@ By default, the weather uses the device GPS if available (for Ionic).
 
 If the device doen't have one (like the Versa), the weather will try to use the phone's GPS.
 
-However, if sometimes it doesn't work or you want to use a manual location, you can set a manual location through the (mobile) companion's settings app.
+However, if sometimes it doesn't work or if you want to use a manual location, you can set one through the (mobile) companion's settings app.
 
 ![manual-location-settings.png](screenshots/manual-location-settings.png)
 
