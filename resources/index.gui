@@ -3,12 +3,12 @@
   <rect id="background">
     <g id="lockUI" visibility="hidden">
       <image id="lockUI-img" href="icons/lock.png"
-      width="45" height="45" x="20" y="140" opacity="0.5" />
+      width="45" height="45" x="20" opacity="0.5" />
     </g>
 
     <g id="action-switcher">
       <image id="action-switcher-img" href="icons/stats.png"
-             width="45" height="45" x="20" y="200" pointer-events="visible"/>
+             width="55" height="55" x="20" pointer-events="visible"/>
     </g>
 
     <g class="metric-container" >

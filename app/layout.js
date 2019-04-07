@@ -8,21 +8,17 @@ const { height, width } = device.screen;
 
 const deviceType = width === 300 && height === 300 ? 'Versa' : 'Ionic';
 
-/**
- * Return horizontal icon position.
- */
+/** Return horizontal icon position. */
 export function getIconX() {
   const hPos = {
     Ionic: 290,
     Versa: 250,
   };
-  
+
   return hPos[deviceType];
 }
 
-/**
- * Return vertical icon position.
- */
+/** Return vertical icon position. */
 export function getIconY({ metricNumber }) {
   const vPos = {
     Ionic: {
@@ -40,7 +36,7 @@ export function getIconY({ metricNumber }) {
       4: 255,
     },
   };
-  
+
   return vPos[deviceType][metricNumber];
 }
 
@@ -50,16 +46,23 @@ export function getIconY({ metricNumber }) {
  */
 export function getModeIconY() {
   const vPos = {
-    Ionic: 200,
-    Versa: 240,
+    Ionic: 190,
+    Versa: 230,
   };
-  
+
   return vPos[deviceType];
 }
 
-/**
- * Return vertical text position.
- */
+export function getLockIconY() {
+  const vPos = {
+    Ionic: 130,
+    Versa: 170,
+  }
+
+  return vPos[deviceType];
+}
+
+/** Return vertical text position. */
 export function getTextX({ icon } = {}) {
   const hPos = {
     true: {
@@ -71,6 +74,6 @@ export function getTextX({ icon } = {}) {
       Versa: 290,
     }
   };
-  
+
   return hPos[icon][deviceType];
 }

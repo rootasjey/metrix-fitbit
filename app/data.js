@@ -197,4 +197,7 @@ settings.bindLockUIChanged(updateLockUIIcon);
 function updateLockUIIcon(active) {
   const lockUI = document.getElementById('lockUI');
   lockUI.style.visibility = active ? 'visible' : 'hidden';
+
+  const lockUIImg = document.getElementById('lockUI-img');
+  lockUIImg.y = layout.getLockIconY();
 }
